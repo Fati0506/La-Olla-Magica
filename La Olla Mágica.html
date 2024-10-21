@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Olla Mágica</title>
+    <link rel="stylesheet" href="css/diseñonav.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Boton hacia arriba -->
+<button class="toTop" id="toTop">
+  <svg viewBox="0 0 24 24">
+    <path d="m4 16 8-8 8 8"></path>
+  </svg>
+</button>
+    <!-- Barra de Navegación -->
+    <header>
+        <nav>
+            <div class="navbar">
+                <a href="#" class="logo">La Olla Mágica</a>
+                <div class="nav-links">
+                    <a href="#historia">Historia</a>
+                    <a href="#carta">Carta</a>
+                    <a href="#opiniones">Opiniones</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+                    <div class="cart-icon">
+                      <a id="carrito" href="#"><img src="img/carrito.png" alt="Carrito"></a>
+                    </div>
+
+                    <!-- Modal del carrito (se muestra cuando haces clic en el icono) -->
+                    <div id="cartModal" class="modal" style="display: none;">
+                      <div class="cart-content">
+                        <h3>Carrito de Compras</h3>
+                        <ul class="cart-items"></ul>
+                        <p class="cart-total"></p>
+                        <button id="vaciar_carrito">Vaciar Carrito</button>
+                        <button id="cerrar_modal">Cerrar</button>
+                      </div>
+                    </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Carrusel de imágenes -->
+    <section class="carousel-section">
+      <button class="prev">←</button>
+      <button class="next">→</button>
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <img src="img/platos.jpg" alt="Plato del restaurante">
+          <img src="img/interior2.jpg" alt="Interior del restaurante">
+          <img src="img/lleno2.jpg" alt="Personas consumiendo en el restaurante">
+        </div>
+      </div>
+      <div class="carousel-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+    <script>
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length; 
+        showSlide(currentIndex);
+    });
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+    });
+    </script>
+
+    <!--Sección de Historia -->
+    <section class="history-section">
+        <div class="container">
+            <div class="history-content">
+                <div class="history-text">
+                    <h3 id="historia">NUESTRA HISTORIA</h3>
+                    <p>En el bullicioso corazón de Lima, "La Olla Mágica" emerge como un crisol de sabores que desafía los sentidos. Fundado en 2024 por visionarios culinarios, este rincón gastronómico transforma ingredientes locales en sinfonías de sabor, llevando a los comensales en un viaje cautivador a través de la rica tapicería culinaria del Perú.</p>
+                </div>
+                <div class="history-image">
+                    <img src="img/equipo.jpg" alt="Equipo de trabajo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu de carta donde se añaden productos -->
+    <section class="menu-section">
+        <h3 id="carta">NUESTRA CARTA</h3>
+        <div class="menu">
+            <div class="menu-column">
+                <h4>ENTRADAS</h4>
+                <div class="menu-item">
+                    <img src="img/causa.jpg" alt="Causa">
+                    <div class="menu-item-content">
+                         <h1>CAUSA</h1>
+                         <p>Precio: S/ 5.00</p>
+                         <button class="add-to-cart" data-id="1" data-name="Causa" data-price="5.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/papa.jpg" alt="Papa a la huancaína">
+                    <div class="menu-item-content">
+                         <h1>PAPA A LA HUANCAÍNA</h1>
+                         <p>Precio: S/ 4.00</p>
+                         <button class="add-to-cart" data-id="2" data-name="Papa a la huancaína" data-price="4.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/ensalada.jpg" alt="Ensalada de palta">
+                    <div class="menu-item-content">
+                         <h1>ENSALADA DE PALTA</h1>
+                         <p>Precio: S/ 3.00</p>
+                         <button class="add-to-cart" data-id="3" data-name="Ensalada de palta" data-price="3.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/sopa.jpg" alt="Sopa de pollo">
+                    <div class="menu-item-content">
+                         <h1>SOPA DE POLLO</h1>
+                         <p>Precio: S/ 7.00</p>
+                         <button class="add-to-cart" data-id="4" data-name="Sopa de pollo" data-price="7.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-column">
+                <h4>FONDO</h4>
+                <div class="menu-item">
+                    <img src="img/arroz chaufa.jpg" alt="Arroz Chaufa">
+                        <div class="menu-item-content">
+                         <h1>ARROZ CHAUFA</h1>
+                         <p>Precio: S/ 15.00</p>
+                         <button class="add-to-cart" data-id="5" data-name="Arroz Chaufa" data-price="15.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/seco a la norteña.jpg" alt="Seco a la norteña">
+                        <div class="menu-item-content">
+                         <h1>SECO A LA NORTEÑA</h1>
+                         <p>Precio: S/ 18.00</p>
+                         <button class="add-to-cart" data-id="6" data-name="Seco a la norteña" data-price="18.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/ceviche.jpg" alt="Ceviche">
+                        <div class="menu-item-content">
+                         <h1>CEVICHE</h1>
+                         <p>Precio: S/ 20.00</p>
+                         <button class="add-to-cart" data-id="7" data-name="Ceviche" data-price="20.00" onclick="alert('Se agregó al carrito de compras !')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/tallarines verdes.jpg" alt="Tallarines verdes">
+                    <div class="menu-item-content">
+                         <h1>TALLARINES VERDES</h1>
+                         <p>Precio: S/ 19.00</p>
+                         <button class="add-to-cart" data-id="8" data-name="Tallarines verdes" data-price="19.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-column">
+                <h4>POSTRES</h4>
+                <div class="menu-item">
+                    <img src="img/crema volteada.jpg" alt="Crema volteada">
+                    <div class="menu-item-content">
+                         <h1>CREMA VOLTEADA</h1>
+                         <p>Precio: S/ 8.00</p>
+                         <button class="add-to-cart" data-id="9" data-name="Crema volteada" data-price="8.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/mazamorra morada.jpg" alt="Mazamorra morada">
+                        <div class="menu-item-content">
+                         <h1>MAZAMORRA MORADA</h1>
+                         <p>Precio: S/ 5.00</p>
+                         <button class="add-to-cart" data-id="10" data-name="Mazamorra morada" data-price="5.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/torta de chocolate.jpg" alt="Torta de chocolate">
+                    <div class="menu-item-content">
+                         <h1>TORTA DE CHOCOLATE</h1>
+                         <p>Precio: S/ 9.00</p>
+                         <button class="add-to-cart" data-id="11" data-name="Torta de chocolate" data-price="9.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="img/tartaleta de fresa.jpg" alt="Tartaleta de fresa">
+                    <div class="menu-item-content">
+                         <h1>TARTALETA DE FRESA</h1>
+                         <p>Precio: S/ 6.00</p>
+                         <button class="add-to-cart" data-id="12" data-name="Tartaleta de fresa" data-price="6.00" onclick="alert('Se agregó al carrito de compras!')">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="opiniones">
+      <h3 id="opiniones"> OPINIONES </h3>
+
+      <div class="opiniones-container" id="opiniones-container">
+          <!-- Las opiniones se añadirán aquí dinámicamente -->
+      </div>
+    </section>
+    <section class="todo-contacto">
+      <h3 id="contacto">CONTACTO</h3>
+      <div class="contacto">
+          <div class="mapa">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.964977008592!2d-77.03197448561798!3d-12.046654545937314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b5d35662c7%3A0x15f0bbc8564dc6e0!2sPlaza%20Mayor%20de%20Lima!5e0!3m2!1ses-419!2spe!4v1634345765693!5m2!1ses-419!2spe" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="info">
+              <h2>Horario</h2>
+              <p>Local : Lunes a Domingos<br>12:00pm - 23:00pm</p>
+              <p>Delivery : Martes a Domingos<br>14:00pm a 22:00pm</p>
+              <h2>Números de contacto</h2>
+              <p>912501440 / 987654321</p>
+              <p class="gracias">Gracias por tu preferencia ❤️</p>
+          </div>
+      </div>
+
+      <div class="formulario-opinion">
+          <h2>Deja tu opinión</h2>
+          <input type="text" id="nombre" placeholder="Tu nombre" maxlength="30" required>
+          <div class="estrellas" data-rating="0">
+              <span class="estrella" data-value="1">★</span>
+              <span class="estrella" data-value="2">★</span>
+              <span class="estrella" data-value="3">★</span>
+              <span class="estrella" data-value="4">★</span>
+              <span class="estrella" data-value="5">★</span>
+          </div>
+          <textarea id="comentario" placeholder="Tu comentario" maxlength="50" required></textarea>
+          <button id="enviar-opinion">Enviar opinión</button>
+      </div>
+      </section>
+    <!-- Final-->
+    <footer style="background-color: #4d4b7d; color: white; padding: 8px 37px; margin-top: 38px;">
+  <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+    
+    <div style="flex: 1; min-width: 200px; padding: 10px;">
+      <h3 style="color: #bc90ff;">Sobre Nosotros</h3>
+      <p style="line-height: 1.6; text-align: justify;">
+        Buscamos crecer y llegar a ser un restaurante reconocido a nivel nacional. Próximamente traeremos más noticias.
+      </p>
+    </div>
+
+    <div style="flex: 1; min-width: 200px; padding: 0 0 0 69px;">
+      <h3 style="color: #bc90ff;">Acerca de La Olla Mágica</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="#historia" style="color: white; text-decoration: none;">Historia</a></li>
+        <li><a href="#carta" style="color: white; text-decoration: none;">Carta</a></li>
+        <li><a href="#opiniones" style="color: white; text-decoration: none;">Opiniones</a></li>
+        <li><a href="#contacto" style="color: white; text-decoration: none;">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div style="flex: 1; min-width: 200px; padding: 10px;">
+      <h3 style="color: #bc90ff;">Contacto</h3>
+      <p>
+        <strong>Correo:</strong> laollamágica.com<br>
+        <strong>Teléfono:</strong> 912501440 / 987654321<br>
+        <strong>Dirección:</strong> Próximamente...
+      </p>
+    </div>
+   </div>
+  <hr style="border-color: #bc90ff; margin: 10px 0;">
+  
+  <div style="text-align: center; padding: 5px;">
+    <p>&copy; 2024 La Olla Mágica. Todos los derechos reservados.</p>
+  </div>
+</footer> 
+    <script src="js/script.js"></script>
+</body>
+</html>
